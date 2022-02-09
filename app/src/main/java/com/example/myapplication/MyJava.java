@@ -10,8 +10,6 @@ public class MyJava {
         myKotlin.kotlinFun("Ananya");
 
         System.out.println("New change commit2");
-
-        mistake
         //System.out.println("L&T Call from Java > "+MyKotlin.MYTAG);
     }
 
