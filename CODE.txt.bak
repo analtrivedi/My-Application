@@ -1,0 +1,141 @@
+Lambda Function ----------------------------------------------------------
+
+
+//val myLambda: (Int) -> Unit = {s: Int -> println("Hello ${s}")}
+val myLambda: (Int) -> Unit = { println("Hello ${it}")}
+ 
+ fun addNumber (x: Int, y:Int, action: (Int) -> Unit){
+     val sum = x + y
+     action(sum)
+ }
+ 
+ addNumber(2, 6, myLambda)
+ println("\n")
+ addNumber(2, 3) { s -> println("Hello2 ${s}")}
+
+<<<<<<<<<<<Output>>>>>>>>>>  
+Hello 8
+Hello2 5
+
+ fun multiply(a: Int, b: Int, action: (Int, Int) -> Int ){
+     println("Karma ${action(a ,b)}")
+ }
+  multiply(2, 3) { x, y -> x*y}
+  
+<<<<<<<<<<<Output>>>>>>>>>> 
+Karma 6 
+
+class Japan{
+     var allowForeigner: Boolean = true
+ }
+ class India{
+     var numberofState: Int = 0
+     fun stateCount(){
+         println("Number of state > ${numberofState}")
+     }
+ }
+ val jap = Japan()
+ val ind = India()
+ 
+ with(jap){
+     allowForeigner = false
+ }
+ println("Allow Foreginer = ${jap.allowForeigner}")
+ println("\n")
+ ind.apply{
+     numberofState = 29
+ }.stateCount()
+   
+<<<<<<<<<<<Output>>>>>>>>>>  
+Allow Foreginer = false
+Number of state > 29 
+
+Array----------------------------------------------------------
+
+val arr = Array<Int>(5){0}
+arr[2] = 30
+arr.set(4, 50)
+for(item in arr)
+    println("${item} ")
+	
+<<<<<<<<<<<Output>>>>>>>>>>  
+0 0 30 0 50
+
+val list = listOf<Int>(1,2,3,7)
+ var mutableList = mutableListOf<Int>()
+ mutableList.add(50)
+ mutableList.add(70)
+ 
+ for(item in list)
+     println("${item} ")
+ println("\n")
+ for(item in mutableList)
+     println("${item} ")	
+	 	
+<<<<<<<<<<<Output>>>>>>>>>>
+1 2 3 7 
+50 70 
+
+val list = mapOf<Int, String>(10 to "Anal", 2 to "Ananya", 7 to "Trivedi")
+ var mutableMap = hashMapOf<Int, String>()
+ mutableMap.put(50, "Lalu")
+ mutableMap.put(70, "Mamata")
+ mutableMap.put(6, "Biman")
+ 
+ mutableMap.replace(50, "Madan")
+ mutableMap.put(6, "Mukul")
+ 
+ for(key in list.keys) println("Key : ${key}, Value : ${list[key]} | ")
+ println("\n")
+ for(key in mutableMap.keys)
+     println("${mutableMap.get(key)} ")
+	 
+<<<<<<<<<<<Output>>>>>>>>>>
+Key : 10, Value : Anal | Key : 2, Value : Ananya | Key : 7, Value : Trivedi | 
+Madan Mamata Mukul 
+
+
+val mySet = setOf<Int>(10, 2 , 7, 5 , 2, 40, 22)
+ var mutableSet = mutableSetOf<Int>(1,70)
+ mutableSet.add(50)
+ mutableSet.add(70)
+ mutableSet.add(6)
+ mutableSet.add(70)
+ mutableSet.remove(50)
+ 
+
+ for(key in mySet) println("${key} ")
+ println("\n")
+ for(xset in mutableSet)
+     println("${xset} ")	
+	 
+<<<<<<<<<<<Output>>>>>>>>>>	 
+10 2 7 5 40 22 
+1 70 6 
+
+Extension Function ----------------------------------------------------------
+
+
+fun String.add(value: String): String{
+     return this+" "+value
+ }
+ 
+ var name: String = "Anal"
+ println(name.add("Trivedi"))
+ 
+ <<<<<<<<<<<Output>>>>>>>>>>	 
+ Anal Trivedi
+ 
+Infix Function ----------------------------------------------------------
+All infix function are extension function. But all extension function are not infix function.
+Infix function has only one parameter.
+
+infix fun String.add(value: String): String{
+     return this+" "+value
+ }
+ 
+ var name: String = "Anal"
+ println(name add "Trivedi")
+ 
+ <<<<<<<<<<<Output>>>>>>>>>>	
+Anal Trivedi
